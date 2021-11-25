@@ -25,10 +25,10 @@ def mostraThomas(x, y):
 def mostraBoina(x, y):
     gameDisplay.blit(boina, (x, y))
 def text_objects(texto, font):
-    textSurface = font.render(texto, True, black)
+    textSurface = font.render(texto, True, white)
     return textSurface, textSurface.get_rect()
 def escreverTela(texto):
-    fonte = pygame.font.Font("freesansbold.ttf", 115)
+    fonte = pygame.font.Font("freesansbold.ttf", 20)
     TextSurf, TextRect = text_objects(texto, fonte)
     TextRect.center = ((largura/2, altura/2))
     gameDisplay.blit(TextSurf, TextRect)
@@ -36,11 +36,10 @@ def escreverTela(texto):
     time.sleep(5)
     game()
 def escreverPlacar(contador):
-    fonte = pygame.font.SysFont(None, 10)
+    fonte = pygame.font.SysFont(None, 50)
     texto = fonte.render("Desvios:"+str(contador), True, white)
-    gameDisplay.blit(texto, (10, 10))
+    gameDisplay.blit(texto, (10,10))
 def dead():
-    pygame.mixer.music.stop()
     escreverTela("By the order of the Peaky Blinders, você Morreu!")
 def game():
     thomasPosicaoX = largura*0.42
@@ -76,8 +75,7 @@ def game():
             boinaY = -200
             boinaX = random.randrange(0, largura)
             desvios = desvios+1
-            boinaVelocidade += 3
-         
+            boinaVelocidade += 3         
         thomasPosicaoX += movimentoX
         if thomasPosicaoX < 0:
             thomasPosicaoX = 0
