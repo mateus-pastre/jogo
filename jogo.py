@@ -16,6 +16,8 @@ thomas = pygame.image.load("imagens/thomas.shelby.png")
 larguraThomas = 100
 fundo = pygame.image.load("imagens/fundo.jpg")
 boina = pygame.image.load("imagens/cap.png")
+som_peaky= pygame.mixer.Sound("imagens/peaky.mpeg")
+som_peaky.set_volume(1)
 nomeJogador = str(input("Insira o seu nome: "))
 emailJogador = str(input("Insira o seu email: "))
 arquivo = open("historico.txt", "a")
@@ -40,6 +42,8 @@ def escreverPlacar(contador):
     texto = fonte.render("Desvios:"+str(contador), True, white)
     gameDisplay.blit(texto, (10,10))
 def dead():
+    pygame.mixer.Sound.play(som_peaky)
+    pygame.mixer.music.stop()
     escreverTela("By the order of the Peaky Blinders, você Morreu!")
 def game():
     thomasPosicaoX = largura*0.42
